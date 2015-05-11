@@ -1,0 +1,4 @@
+Now	you have multiple WordPress instances. However, each instance has a separate address. What would you have to do to put a load balancer in front of the WordPress instances, so that all instances can be accessed using a single address?
+
+You may use Elastic Load Balancing as load balancer in front of the WordPress instances. It can be used to distribute incoming traffic between EC2 instances. You can select the EC2 instances you want to add to the load balancer. You can use the load balancer by visiting the IP address  or DNS name of the load balancer.
+Additionally you may also use Auto Scaling to launch or terminate EC2 instances automatically based on the needs of your application.

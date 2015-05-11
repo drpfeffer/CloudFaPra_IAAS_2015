@@ -1,0 +1,13 @@
+{
+    "run_list": [
+        "recipe[wordpress]"
+    ],
+    "wordpress": {    
+        "version": "latest",
+        "db": {
+        	"root_password" : "rootpwpw",
+        	"pass" : "LyUntFVqNr9meVBIwf96",
+            "host" : "MYSQLSERVER"
+        }
+    }
+}

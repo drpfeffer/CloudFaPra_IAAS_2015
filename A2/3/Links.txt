@@ -1,0 +1,7 @@
+http://gettingstartedwithchef.com/first-steps-with-chef.html
+
+ssh -i ~/Dropbox/10_Uni/SS2015/FaPra_Cloud-Architectures-Managemen/20_AWS/Cloud_FaPra.pem  ubuntu@ec2-52-24-85-165.us-west-2.compute.amazonaws.com
+
+db user: wordpressuser
+
+db pw: 8f7oDDhOPY5U32mIw8oA

@@ -1,0 +1,12 @@
+
+Das Skript \texttt{docker-wordpress.sh} sorgt für ein automatisiertes
+Aufsetzen einer Wordpress Instanz mittels Docker.
+
+Dazu wird Docker zunächst installiert, falls notwendig, anschließend
+als Service gestartet.
+Docker läd nun ein fertiges Image für Wordpress samt LAMP Stack.
+Alternativ könnte hier auch ein entsprechendes Repository mit
+Dockerfile geladen werden, um das Image lokale via \texttt{docker build}
+zu bauen.
+Anschließend prüft das Skript ob bereits ein Wordpress Container läuft
+und startet das vorher geladene (oder gebaute) Image mit offenem Port 80.

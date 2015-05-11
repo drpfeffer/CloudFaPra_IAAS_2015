@@ -1,0 +1,2 @@
+\section{A2-5}
+Verwendung eines ECS Cluster. Kern f\"ur die Erstellung der Wordpress Instanz ist ein \enquote{Service} mit einem Task. Der Task beinhaltet die Erstellung zweier Docker Container (Worpress und MySQL). Die Konfiguration des Sercive der Container inklusive der Verkn\"upfen des Wordpress Containers mit dem MySQL Datenbank Container erfolgt \"uber eine JSON Konfigurationsdatei. Das Element \enquote{containerDefinitions} beschreibt alle  erforderlichen Container.

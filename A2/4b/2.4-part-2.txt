@@ -1,0 +1,18 @@
+
+Das Skript \texttt{run-all.sh} sorgt für ein automatisiertes Aufsetzen einer
+Wordpress Instanz mittels zweier Docker Container, wobei der eine die Webapp
+Wordpress selbst enthält, während im anderen Container die Datenbank liegt.
+
+Dazu wird Docker zunächst installiert, falls notwendig, anschließend als 
+Service gestartet.
+Docker läd nun ein fertiges Image für Wordpress ohne LAMP Stack sowie ein
+Image für eine Datenbank, hier MySQL.
+Alternativ könnten hier auch entsprechende Repositories mit Dockerfile(s)
+geladen werden, um die Images lokale via \texttt{docker build} zu bauen.
+
+Das Skript startet nun zunächst den Container für die Datenbank und
+anschließend den für Wordpress, wobei ein Link zum Datenbank-Container
+hergestellt wird.
+Ein Docker Link sorgt für eine sicherer Verbindung zwischen Containern,
+die Informationen über Umgebungsvariablen austausschen können.
+In unserem Fall werden Informationen wie DB_HOST oder DB_PORT kommuniziert.

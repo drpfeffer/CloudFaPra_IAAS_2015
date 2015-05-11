@@ -1,0 +1,1 @@
+The blogging engine is hosted on different EC2 instances. The load is distributed by the load balancer Elastic Load Balance. All blogging engines use the same content database hosted on AWS RDS. The static files like images or videos are hosted on Amazon S3. All data are delivered by the CDN CloudFront.

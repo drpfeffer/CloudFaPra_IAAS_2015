@@ -1,0 +1,12 @@
+{
+    "run_list": [
+        "recipe[wpmysql]"
+    ],
+    "wpmysql": {    
+        "version": "latest",
+        "db": {
+        	"root_password" : "rootpwpw",
+        	"pass" : "LyUntFVqNr9meVBIwf96"
+        }
+    }
+}

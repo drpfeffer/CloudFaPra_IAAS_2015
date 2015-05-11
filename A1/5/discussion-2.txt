@@ -1,0 +1,6 @@
+Discussion: Does it make sense at all to “load-balance” between these WordPress instances? Remember that currently each WordPress instance has its own separate database in the background.
+
+No, it does not.
+The current approach provides two different blogs, operating on their own database respectively.
+However, two WordPress instances operating both on the same database could balance the webserver load for a single website.
+The database would remain a bottleneck though.

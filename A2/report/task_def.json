@@ -1,0 +1,39 @@
+{
+	"family": "Clould_FaPra_SS15_G2_A2-5",
+	"containerDefinitions":[
+	{
+		"name": "wordpress",
+		"links":[
+			"mysql"
+		],
+		"image":"wordpress",
+		"essential":true,
+		
+		"memory":300,
+		"cpu":10,
+		"portMappings":[
+		{
+			"containerPort":80,
+			"hostPort":80
+		}	
+		]
+	},
+	{
+		"name":"mysql",
+		"image":"mysql",
+		"essential":true,
+		"memory":400,
+		"cpu":10,
+		"environment":[
+		{
+			"name":"MYSQL_ROOT_PASSWORD",
+			"value":"Clould_FaPra_SS15_G2_A2-5"
+		},
+		{
+			"name":"MYSQL_DATABASE",
+			"value":"wordpress"
+		}
+		]
+	}
+	]
+}

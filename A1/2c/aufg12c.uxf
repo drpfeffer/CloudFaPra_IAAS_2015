@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>498</x>
+      <y>162</y>
+      <w>66</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>valign=center
+
+
+Client
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>306</y>
+      <w>150</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Elastic Load Balancing
+
+Failing instances may be 
+replaced seamlessly behind 
+the load balancer. It can
+also be used to balance across
+different availability zones.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>546</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>halign=center
+AWS RDS
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>426</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>halign=center
+AWS EC2
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>642</x>
+      <y>372</y>
+      <w>114</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Web Shop Application
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>642</x>
+      <y>492</y>
+      <w>114</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Web Shop Database
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>498</y>
+      <w>138</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+hosted on</panel_attributes>
+    <additional_attributes>140.0;80.0;140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>378</y>
+      <w>138</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+hosted on</panel_attributes>
+    <additional_attributes>140.0;80.0;140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>342</x>
+      <y>318</y>
+      <w>126</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>318</y>
+      <w>108</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>160.0;90.0;160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>438</y>
+      <w>72</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+connected to</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>192</y>
+      <w>48</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+request</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>618</x>
+      <y>282</y>
+      <w>282</w>
+      <h>348</h>
+    </coordinates>
+    <panel_attributes>Availability Zone B
+--
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>162</x>
+      <y>282</y>
+      <w>282</w>
+      <h>348</h>
+    </coordinates>
+    <panel_attributes>Availability Zone A
+--
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>294</x>
+      <y>372</y>
+      <w>114</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Web Shop Application
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>294</x>
+      <y>492</y>
+      <w>114</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Web Shop Database
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>342</x>
+      <y>438</y>
+      <w>72</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+connected to</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>546</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>halign=center
+AWS RDS
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>498</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+hosted on</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>426</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>halign=center
+AWS EC2
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>222</x>
+      <y>378</y>
+      <w>84</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+hosted on</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>402</x>
+      <y>408</y>
+      <w>246</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+
+Ability to 
+fail over</panel_attributes>
+    <additional_attributes>390.0;200.0;120.0;200.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>402</x>
+      <y>408</y>
+      <w>252</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+
+Ability to 
+fail over</panel_attributes>
+    <additional_attributes>10.0;180.0;260.0;180.0;260.0;10.0;400.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>558</y>
+      <w>630</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-&gt;&gt;&gt;
+Replicated Data Layer</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;1030.0;70.0;1030.0;10.0</additional_attributes>
+  </element>
+</diagram>

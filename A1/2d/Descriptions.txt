@@ -1,0 +1,20 @@
+For the architecture of our log analyzer, we assume that we do not need a elastic cluster for other than the MapReduce module. It is assumed that log files only need to be analyzed in a (fixed) time interval, e.g. once every day. 
+
+Controller: 
+The architecture is designed to use a central controller hosted on a AWS EC2 instance). It used user interaction and task scheduling / triggering. A user can add websites to analyze, or request results or meta/status data via a REST-Full API. The controller schedules new MapReduce tasks in a pre-defined time interval. It will trigger a AWS Lambda instance to fetch log files from the defined web servers and create a new Amazon EMR instance for analyzing.
+
+Amazon Lambda:
+Cost effective, time-triggered service by amazon: ".. runs [...] code in response to events and automatically manages the compute resources ...". Runs job to fetch logs from all known sources. Loads files into a NoSQL DB. Runs job only on external trigger (from controller) "... pay only for the requests served and the compute time required to run your code."
+
+Amazon DynamoDB: 
+NoSQL DB for storing (unprocessed) log files. Filled by Lambda job, used by EMR. Only raw files are stored, results of MapReduce stored elsewhere. Functions as "kind of" HDFS (EMR uses Hadoop). 
+
+Amazon Elastic MapReduce (Amazon EMR): 
+MapReduce service by AWS. EMR with a Hadoop instance is created by controller once all logs have been fetched. Raw data is loaded from DynamoDB, processed data, i.e. results are stored in a S3 bucket. EMR terminated itself after all MapReduce tasks are finished (available a an option for EMR instance). 
+
+S3 buket: 
+Storage area for MapReduce results. Results are accessed by controller and presented to user. 
+
+
+
+This architecture only uses 2 permanently active resources (EC2 and S3). All other components are created on demand and stopped once they finish their tasks. This enables a low-cost but always available analyzing service. A user can access results / manage used web applications at any time.  

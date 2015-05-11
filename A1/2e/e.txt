@@ -1,0 +1,6 @@
+Blog as two-tier Web application
+
+Client requests are dispatched to their best edge location through CloudFront CDN.
+Amazon S3 delivers a client application written with AWS SDK. This client application is querying 
+(and inserting) data directly using services like Amazon S3 or Amazon DynamoDB, 
+without the need of an additional webserver in between.

@@ -1,0 +1,9 @@
+
+A webserver hosted on EC2 instances provides the client front-end for
+operations such es viewing or uploading videos. Necessary metadata
+is queried from DynamoDB by the front-end.
+An uploaded video is stored with Amazon S3, which in turn triggers
+a Job Manager to process the newly uploaded video. This Job Manager
+is enqueuing the jobs, which are processed by Amazon Elastic Transcoder.
+The transcoded videos are stored on S3, while the corresponding metadata
+is inserted into DynamoDB.

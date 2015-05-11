@@ -1,0 +1,259 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[utf8x]{inputenc} 
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{color}
+ 
+% % Mathepakete
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{theorem}
+
+\newcommand{\vektor}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}} 
+
+
+\usepackage{listings}		% Für Programmcode einfügen
+
+\usepackage{pdfpages}		% PDF einbinden
+
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{lastpage}
+\usepackage{scrpage2}		     % Kopf und Fußzeile
+% \usepackage[all]{xy} % Für Zeichnungen (z.B. Automaten)
+
+% Hyperlinks, die nicht markiert sind.
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+urlcolor = blue,
+citecolor = black] {hyperref}
+
+% Farben
+\definecolor{orange}{rgb}{1,0.8,0.2}
+\definecolor{lila}{rgb}{0.6,0,0.6}
+\definecolor{green}{rgb}{0,0.6,0}
+\definecolor{pink}{rgb}{1,0,1}
+
+% Definieren neuer Farben für den Java-Quelltext
+\definecolor{javaBlue}{RGB}{42,0.0,255}
+\definecolor{javaGreen}{RGB}{63,127,95}
+\definecolor{javaLila}{RGB}{127,0,85}
+\definecolor{javaDocBlue}{RGB}{63,95,191}
+\definecolor{javaDocTags}{RGB}{127,159,191}
+
+% Farben für XML
+\definecolor{forestgreen}{RGB}{34,139,34}
+\definecolor{orangered}{RGB}{239,134,64}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+
+
+%  Sonderzeichen für Mengen von Zahlen
+\newcommand{\C}{{\mathbb{C}}}         % \C für C (komplexe Zahlen)
+\newcommand{\Q}{{\mathbb{Q}}}         % \Q für Q (rationale Zahlen)
+\newcommand{\R}{{\mathbb{R}}}         % \R für R (reelle Zahlen)
+\newcommand{\Z}{{\mathbb{Z}}}         % \Z für Z (ganze Zahlen)
+\newcommand{\N}{{\mathbb{N}}}         % \N für N (natürliche Zahlen)
+
+%  Weitere Sonderzeichen
+\renewcommand{\epsilon}{\varepsilon}               % anderes Epsilon
+
+
+% Listings-Einstellungen
+
+\lstset{
+basicstyle=\tiny,
+%keywordstyle=\color{black}\bfseries\underbar,
+identifierstyle=,
+commentstyle=\color{blue},
+stringstyle=\ttfamily,
+showstringspaces=false,
+numbers=left,
+rulesepcolor=\color[gray]{0.5},
+texcl=true,
+commentstyle=\itshape,
+tabsize=4,
+columns=flexible,
+frame=shadowbox,
+literate={ö}{{\"o}}1
+         {ä}{{\"a}}1
+         {ü}{{\"u}}1
+         {Ö}{{\"O}}1
+         {Ä}{{\"A}}1
+         {Ü}{{\"U}}1
+         {ß}{{\ss}}1
+}
+
+% Style für Java
+\lstdefinestyle{java}{language=Java, keywordstyle=\color{javaLila}\bfseries, commentstyle=\color{javaGreen}, stringstyle=\color{javaBlue},
+numbers=left,
+numberstyle=\tiny,
+stepnumber=1,
+frame=trbl,
+showstringspaces=false,
+captionpos=b,
+breaklines=true,
+basicstyle=\rmfamily, morecomment=[s][\color{javaDocBlue}]{/**}{*/},
+tabsize=2,
+emph={@author, @deprecated, @param, @return, @see, @since, @throws, @version, @serial, @serialField, @serialData, @link},
+emphstyle=\color{javaDocTags},
+extendedchars=true}
+
+
+
+% Style für XML
+\lstdefinestyle{XML} {
+    language=XML,
+    extendedchars=true, 
+    breaklines=true,
+    breakatwhitespace=true,
+    emph={},
+    emphstyle=\color{red},
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    commentstyle=\color{gray}\upshape,
+    morestring=[b]",
+    morecomment=[s]{<?}{?>},
+    morecomment=[s][\color{forestgreen}]{<!--}{-->},
+    keywordstyle=\color{orangered},
+    stringstyle=\ttfamily\color{black}\normalfont,
+    tagstyle=\color{darkblue}\bf,
+    morekeywords={attribute,xmlns,version,type,release, name, maxOccurs},
+}
+
+
+%  Hier sucht man sich den gewünschten Stil für Kopf- bzw. Fußzeile aus.
+%\pagestyle{empty}                    % keine Kopf- und Fußzeilen
+%\pagestyle{plain}                    % nur Seitenzahlen
+%\pagestyle{headings}                 % Aktivieren für Kopf- und Fußzeilen
+\pagestyle{scrheadings}							% schönere Kopf und Fußzeile
+\clearscrheadings 
+
+% % % % % % % % % % % % % % %
+% Zeichenpakete (Automaten) % 
+% % % % % % % % % % % % % % %
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tkz-berge}
+\usetikzlibrary{arrows,automata}
+
+%  Kopf und Fußzeile ---------------------------------------
+
+\ihead{Gruppe 2}
+\cfoot{Felix Ebinger (2719182)\\Thomas Reinhardt (2635525)\\Julian Ziegler (2556772)}
+\ohead{\today}
+\ifoot{Assignement 2}
+\chead{Lab Course:\\
+Cloud Architectures \& Management}
+\ofoot{Seite \thepage \  von \pageref{LastPage}}
+
+\begin{document}
+\section*{Aufgabe 2.2}
+Das Skript \texttt{docker-wordpress.sh} (siehe Listing \ref{lst:22-docker-wordpress}) sorgt für ein automatisiertes Aufsetzen einer WordPress Instanz mittels Docker auf Amazon Linux.
+
+Dazu wird Docker falls notwendig zunächst installiert und anschließend als Service gestartet. Docker lädt nun ein fertiges Image für WordPress inklusive LAMP-Stack. Alternativ könnte hier auch ein entsprechendes Repository mit Dockerfile geladen werden, um das Image lokale via \verb|docker build| zu bauen. Anschließend prüft das Skript ob bereits ein WordPress Container läuft und startet das vorher geladene (oder gebaute) Image mit offenem Port 80. Damit WordPress von außen erreichbar ist, muss zusätzlich noch mittels einer Security-Rule Port 80 für den HTTP-Traffic freigegeben werden. WordPress kann nun im Webbrowser aufgerufen und eingerichtet werden.
+\lstinputlisting[language=bash, caption={Automatisiertes Aufsetzen von Docker}, label={lst:22-docker-wordpress}]{docker-wordpress.sh}
+\subsection*{Diskussion}
+Bei der Virtualisierung mittels Hypervisor wird eine komplette Maschine inklusive Hardware virtualisiert. Auf dieser virtuellen Maschine muss zunächst ein Betriebssystem installiert werden. Die Virtualisierung erlaubt dabei auch, dass in der VM ein anderes Betriebssystem als auf dem Host-System installiert wird. Da es sich um komplett getrennte Maschinen handelt, wirkt sich die Kompromittierung einer VM nicht auf die anderen aus. Allerdings entsteht durch die Virtualisierung eines kompletten Systems ein relativ großer Overhead, sowohl beim Ressourcenverbrauch bei der Ausführung als auch bei der Imagegröße.
+
+Bei der Virtualisierung mittels Container wird dagegen nur die Laufzeitumgebung der Anwendung innerhalb des Betriebssystems virtualisiert. Dadurch sind die Container im Vergleich zu VMs klein und benötigen weniger Speicher, da nicht mehrere Betriebssysteme parallel laufen. Die Initialisierung von Containern geht sehr schnell, während bei VMs zunächst ein Betriebssystem gestartet werden muss. Da keine ganze Maschine virtualisiert wird, kann bei der Container-Virtualisierung außerdem die Zuteilung der Systemressourcen dynamisch zur Laufzeit angepasst werden. Das geteilte Betriebssystem der Container stellt gleichzeitig jedoch auch den größten Schwachpunkt dieser Virtualisierungsart dar, da sich jegliche Betriebssystemänderung (z.B. Kernel-Update, Service-Packs, \dots) direkt auf alle Container auswirkt.
+
+
+%
+%container:
+%BS shared medium, Laufzeitumgebung virtualisiert
+%+ Lightweight 
+%+ schnelle Initialisierung
+%+ höhere Performance 
+%+ Speichereffizient (Permanter Speicher, HS)
+%+ Dateien teilen einfacher
+%+ Mehr Instanzen parallel
+%- Wenn eine Instanz gehackt wird und Kernel kompromittiert, dann sind alle Instanzen kompromittiert
+%Komplette Trennung => HV
+\section*{Aufgabe 2.3}
+\subsection*{Vorbereitung}
+Da bei der Verwendung von \emph{Chef Solo} kein Chef-Server genutzt wird, muss Chef zunächst lokal installiert werden und wird von dort genutzt um die VMs in der Cloud einzurichten und zu konfigurieren. Zusätzlich werden lokal einige Tools benötigt, insbesondere \verb|knife-ec2| um EC2-Instanzen zu erzeugen, \verb|librarian-chef| um lokal die benötigten Rezepte herunterzuladen und zu installieren und \verb|knife-solo| um Chef und die Rezepte auf den Servern zu installieren. Um das Einrichten der EC2-Instanzen zu vereinfachen, kann eine Konfigurationsdatei erzeugt werden, in der die Standardparameter zur Kommunikation mit den Amazon-Servern und dem Einrichten der Instanzen gespeichert sind.
+\begin{lstlisting}[language=Ruby]
+knife[:region] = "<AmazonRegion>"
+knife[:availability_zone] = "<AvailabilityZone>"
+knife[:aws_access_key_id] = "<AWS_ACCESS_KEY_ID>"
+knife[:aws_secret_access_key] = "<AWS_SECRET_ACCESS_KEY>"
+knife[:image] = "ami-4b471c7b"
+knife[:flavor] = "t1.micro"
+knife[:chef_mode] = "solo"
+knife[:ssh_user] = "ubuntu"
+knife[:identity_file] = "<PathToSecretKeyForSSHAuthentification>"
+knife[:aws_ssh_key_id] = "<KeyNameInAWSDashboard>"
+\end{lstlisting}
+Nachdem alle Tools installiert sind, muss lokal zunächst eine Küche eingerichtet werden:
+\begin{verbatim}
+knife solo init .chef/knife-solo
+\end{verbatim}
+In dieser Küche müssen nun die benötigten Kochbücher im \texttt{Cheffile} spezifiziert und mittels \verb|librarian-chef install| heruntergeladen und installiert werden. 
+\subsection*{Aufgabe 2.3}
+Um eine WordPress Instanz auf einer EC2-Instanz zu installieren, muss eine EC2-Instanz mit Security-Regeln für SSH, HTTP und HTTPS erzeugt werden und der Server dann für die Nutzung mit Chef vorbereitet werden, also insbesondere Chef installiert werden. Die benötigte \verb|<Server-IP>| für diesen Befehl wird bei der Server-Instanziierung angezeigt.
+\begin{verbatim}
+knife ec2 server create --groups=sshhttphttps
+knife solo prepare ubuntu@<Server-IP>
+\end{verbatim}
+Um \verb|knife| mitzuteilen, welche Kochbücher auf dem Server installiert werden sollen, muss dies in der lokalen Konfiguration für diesen Server festgelegt werden. In dieser Datei können auch die Attribute, die im Kochbuch beschrieben sind, festgelegt werden. Bei dieser Aufgabe haben wir uns für fast alle Attribute auf die Standardwerte beschränkt und fordern beispielhaft nur, dass die aktuellste WordPress-Version installiert wird.
+\begin{lstlisting}
+{
+    "run_list": [
+        "recipe[wordpress]"
+    ],
+    "wordpress": {    
+        "version": "latest"
+    }
+}
+\end{lstlisting}
+Nun kann die Instanz gekocht werden, also WordPress inklusive aller Abhängigkeiten auf dem Server installiert werden:
+\begin{verbatim}
+knife solo cook ubuntu@<Server-IP>
+\end{verbatim}
+Die WordPress-Installation ist nun unter der \verb|<Server-IP>| erreichbar.
+\subsection*{Diskussion}
+Chef ist ein Werkzeug zum Konfigurationsmanagement. Mit Chef kann ein komplexes Setup eingerichtet werden, von der Installation von Anwendungen über das Erzeugen und Einrichten von Nutzern und Gruppen bis zur Konfiguration eines Systems und der Anwendungen. Außerdem ermöglicht Chef es, die Konfiguration laufender Systeme anzupassen. Des Weiteren stehen viele Kochbücher bereits zur Verfügung, die ein schneller installieren von Anwendungen auf Servern erlauben. Diese sind Betriebssystem unabhängig verfasst, so dass mit demselben Kochbuch z.B. WordPress sowohl auf Windows als auch auf Linux eingerichtet werden kann.
+Allerdings haben die Kochbücher von Chef externe Abhängigkeiten (z.B. Softwarequellen im Internet), es ist also möglich, dass Kochbücher nach einiger Zeit nicht mehr funktionieren, da die Abhängigkeiten nicht mehr zur Verfügung stehen. Außerdem initialisieren die Kochbücher nicht das System oder bringen es in einen bestimmten Zustand, sondern werden auf dem aktuellen Stand des Systems ausgeführt. Dadurch entsteht die Gefahr von versteckten Abhängigkeiten, dass z.B. ein Tool auf der einen Maschine bereits installiert ist, nicht jedoch auf einer anderen, dies beim Erstellen des Kochbuchs jedoch nicht beachtet wurde.
+
+Um bei Chef ein weiteres System aufzusetzen, muss wieder das gesamte Kochbuch ausgeführt werden. Bei Docker dagegen kann von einem existierenden Image einfach eine weitere Instanz gestartet werden oder basierend auf diesem Image weitere Anwendungen installiert werden.
+
+Da Chef und Docker jedoch eigentlich unterschiedliche Anwendungsgebiete haben, können sie auch gemeinsam genutzt werden. So kann Chef dafür genutzt werden, Container zu bauen, zu starten und zu verwalten.
+
+\section*{Aufgabe 2.4}
+\subsection*{VMs}
+Sofern der Vorbereitungsschritt von Aufgabe 2.3 noch nicht ausgeführt wurde, muss dieser zunächst ausgeführt werden.
+
+Das Skript \texttt{run.sh} (siehe Listing \ref{lst:24-run}) setzt zwei unterschiedliche EC2-Instanzen auf und installiert mittels Chef auf der einen MySQL und auf der anderen das zugehörige WordPress. 
+
+Dazu wird zunächst der Datenbankserver eingerichtet. Dieser wird mit den Secruity-Regeln für SSH- und MySQL-Zugriff instanziiert und Chef installiert. Für den Datenbankserver haben wir ein neues Kochbuch erzeugt, das das Einrichten des Wordpress-Nutzers und Datenbank ermöglicht. Dann wird der Server mit der zugehörigen Konfigurationsdatei von Chef eingerichtet. In dieser Konfigurationsdatei muss das MySQL-Root-Passwort und die Zugriffsdaten des MySQL-WordPress-Nutzers festgelegt werden. Um den externen Zugriff auf den Server zu ermöglichen, muss dies in der Datenbank explizit erlaubt werden, dies wird durch ein Skript ermöglicht. 
+
+Danach wird der WordPress-Server eingerichtet. Auch dieser wird zunächst mit den Seurity-Regeln für SSH-, HTTP- und HTTPS-Zugriff instanziiert und Chef installiert. In der Konfigurationsdatei für den WordPress-Server muss der Datenbank-Server und der MySQL-Nutzer eingetragen werden. Der Benutzername und das Passwort für den Datenbankbenutzer muss dabei dem auf dem Datenbankserver eingerichteten Benutzer entsprechen. Danach wird der Server mit der Konfigurationsdatei von Chef eingerichtet.
+
+Die WordPress-Installation ist nun unter der Adresse der WordPress-Instanz erreichbar.
+
+\lstinputlisting[caption={Automatisiertes Aufsetzen zweier VMs für WordPress und MySQL}, label={lst:24-run}]{run.sh}
+\subsection*{Aufgabe 2.4 - Container}
+
+Das Skript \texttt{run-all.sh} (siehe Listing \ref{lst:24-run-all}) sorgt für ein automatisiertes Aufsetzen einer WordPress Instanz mittels zweier Docker Container (auf Amazon Linux), wobei der eine die Webapp WordPress selbst enthält, während im anderen Container die Datenbank liegt.
+
+Dazu wird Docker zunächst installiert, falls notwendig, anschließend als Service gestartet. Docker läd nun ein fertiges Image für WordPress ohne LAMP Stack sowie ein Image für eine Datenbank, hier MySQL. Alternativ könnten hier auch entsprechende Repositories mit Dockerfile(s) geladen werden, um die Images lokale via \texttt{docker build} zu bauen.
+
+Das Skript startet nun zunächst den Container für die Datenbank und anschließend den für Wordpress, wobei ein Link zum Datenbank-Container hergestellt wird. Ein Docker Link sorgt für eine sicherer Verbindung zwischen Containern, die Informationen über Umgebungsvariablen austausschen können. In unserem Fall werden Informationen wie DB\_HOST oder DB\_PORT kommuniziert.
+\lstinputlisting[language={bash}, caption={Automatisiertes Aufsetzen zweier Container für WordPress und MySQL}, label={lst:24-run-all}]{run-all.sh}
+\section*{Aufgabe 2.5}
+Verwendung eines ECS Cluster. Kern f\"ur die Erstellung der Wordpress Instanz ist ein ,,Service`` mit einem Task. Der Task beinhaltet die Erstellung zweier Docker Container (Worpress und MySQL). Die Konfiguration des Sercive der Container inklusive der Verkn\"upfen des Wordpress Containers mit dem MySQL Datenbank Container erfolgt \"uber eine JSON Konfigurationsdatei (siehe Listing \ref{lst:25-task-def}). Das Element ,,containerDefinitions`` beschreibt alle  erforderlichen Container.
+\lstinputlisting[caption={Konfigurationsdatei für Docker Container}, label={lst:25-task-def}]{task_def.json}
+\end{document}
