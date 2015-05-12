@@ -1,2 +1,4 @@
-dummy-text
-(silence the "add a README!" notification...)
+Fachpraktikum Cloud Architectures and Management
+================================================
+
+Bearbeitung der Aufgaben durch Gruppe 2.
