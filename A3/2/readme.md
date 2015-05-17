@@ -26,8 +26,8 @@ Adding the constraints `--constraints "cpu-power=10 cpu-cores=1 mem=768M"` durin
 bootstrapping will result in juju using `t2.micro` instances.
 
 However, this is currently not possible due to a little bug in juju stable.
-To fix it you have to apply `patch.diff` to the juju source prior to building.
-(Patch is merged into juju master as of https://github.com/juju/juju/commit/143e4fea)
+~~To fix it you have to apply `patch.diff` to the juju source prior to building.~~
+Patch is merged into juju master as of https://github.com/juju/juju/commit/143e4fea.
 
 For OS X users installation can be done with `brew`
 (on-the-fly patching the current stable version):
