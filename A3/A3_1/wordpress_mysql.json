@@ -1,5 +1,5 @@
 {
-  "AWSTemplateFormatVersion" : "2015-05-17",
+  "AWSTemplateFormatVersion" : "2010-09-09",
 
   "Description" : "AWS CloudFormation template for wordpress. Two EC2 instances will be created. One runing the WordPress part (PHP, wordpress etc), the other running a mysql server.",
 
@@ -15,8 +15,7 @@
       "Description" : "WebServer EC2 instance type",
       "Type" : "String",
       "Default" : "t2.micro",
-      "AllowedValues" : [ "t1.micro", "t2.micro"]
-,
+      "AllowedValues" : [ "t1.micro", "t2.micro"],
       "ConstraintDescription" : "must be a valid EC2 instance type."
     },
 
@@ -138,8 +137,8 @@
                   "path=Resources.WebServer.Metadata.AWS::CloudFormation::Init\n",
                   "action=/opt/aws/bin/cfn-init -v ",
                           "         --stack ", { "Ref" : "AWS::StackName" },
-                          "         --resource WebServer ",
-                          "         --configsets wordpress_install ",
+                          "         --resource MySQLServer ",
+                          "         --configsets mysql_install ",
                           "         --region ", { "Ref" : "AWS::Region" }, "\n"
                 ]]},          
                 "mode"  : "000400",
@@ -169,13 +168,13 @@
                 "content" : { "Fn::Join" : ["", [
                   "CREATE DATABASE ", { "Ref" : "DBName" }, ";\n",
                   "CREATE USER '", { "Ref" : "DBUser" }, "'@'localhost' IDENTIFIED BY '", { "Ref" : "DBPassword" }, "';\n",
-                  "GRANT ALL ON ", { "Ref" : "DBName" }, ".* TO '", { "Ref" : "DBUser" }, "'@'localhost';\n",
+                  "GRANT ALL ON ", { "Ref" : "DBName" }, ".* TO '", { "Ref" : "DBUser" }, "'@'%';\n",
                   "FLUSH PRIVILEGES;\n"
                 ]]},
                 "mode"  : "000400",
                 "owner" : "root",
                 "group" : "root"
-              },
+              }
             },
             "services" : {
               "sysvinit" : {
@@ -191,7 +190,7 @@
                 "command" : { "Fn::Join" : ["", ["mysqladmin -u root password '", { "Ref" : "DBRootPassword" }, "'"]]},
                 "test" : { "Fn::Join" : ["", ["$(mysql ", { "Ref" : "DBName" }, " -u root --password='", { "Ref" : "DBRootPassword" }, "' >/dev/null 2>&1 </dev/null); (( $? != 0 ))"]]}
               },
-              "02_create_database" : {
+              "03_create_database" : {
                 "command" : { "Fn::Join" : ["", ["mysql -u root --password='", { "Ref" : "DBRootPassword" }, "' < /tmp/setup.mysql"]]},
                 "test" : { "Fn::Join" : ["", ["$(mysql ", { "Ref" : "DBName" }, " -u root --password='", { "Ref" : "DBRootPassword" }, "' >/dev/null 2>&1 </dev/null); (( $? != 0 ))"]]}
               }
@@ -213,15 +212,18 @@
 
                        "/opt/aws/bin/cfn-init -v ",
                        "         --stack ", { "Ref" : "AWS::StackName" },
-                       "         --resource WebServer ",
-                       "         --configsets wordpress_install ",
+                       "         --resource MySQLServer ",
+                       "         --configsets mysql_install ",
                        "         --region ", { "Ref" : "AWS::Region" }, "\n",
 
                        "/opt/aws/bin/cfn-signal -e $? ",
                        "         --stack ", { "Ref" : "AWS::StackName" },
-                       "         --resource WebServer ",
+                       "         --resource MySQLServer ",
                        "         --region ", { "Ref" : "AWS::Region" }, "\n"
-        ]]}}
+        ]]}},
+        "Tags" :[
+            {"Key" : "Name", "Value" : "Assigment 3.1 - MySQL server"}
+        ]
       },
 
       "CreationPolicy" : {
@@ -294,8 +296,8 @@
                   "cp /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php\n",
                   "sed -i \"s/'database_name_here'/'",{ "Ref" : "DBName" }, "'/g\" wp-config.php\n",
                   "sed -i \"s/'username_here'/'",{ "Ref" : "DBUser" }, "'/g\" wp-config.php\n",
-                  "sed -i \"s/'password_here'/'",{ "Ref" : "DBPassword" }, "'/g\" wp-config.php\n",
-                  "sed -i \"s/'localhost'/'",{ "Fn::GetAtt" : [ "MySQLServer", "Endpoint.Address" ] }, "'/g\" wp-config.php\n"
+                  "sed -i \"s/'password_here'/''/g\" wp-config.php\n",
+                  "sed -i \"s/'localhost'/'",{ "Fn::GetAtt" : [ "MySQLServer", "PrivateIp" ] }, "'/g\" wp-config.php\n"
                 ]]},
                 "mode" : "000500",
                 "owner" : "root",
@@ -339,7 +341,10 @@
                        "         --stack ", { "Ref" : "AWS::StackName" },
                        "         --resource WebServer ",
                        "         --region ", { "Ref" : "AWS::Region" }, "\n"
-        ]]}}
+        ]]}},
+        "Tags" :[
+            {"Key" : "Name", "Value" : "Assigment 3.1 - WordPress ser"}
+        ]
       },
       "CreationPolicy" : {
         "ResourceSignal" : {
