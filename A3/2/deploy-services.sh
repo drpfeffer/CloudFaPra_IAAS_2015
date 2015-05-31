@@ -16,9 +16,9 @@ juju expose wordpress
 
 
 # GUI
-juju deploy juju-gui --to 0
-sleep 2
-juju expose juju-gui
+#juju deploy juju-gui --to 0
+#sleep 2
+#juju expose juju-gui
 
 
 # scaling
