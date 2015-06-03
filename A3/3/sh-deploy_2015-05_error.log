@@ -1,0 +1,13 @@
+2015-05-27 16:48:37,786  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The element with the name "{http://docs.oasis-open.org/tosca/ns/2011/12/ToscaBaseTypes}ServerProperties" was not found.
+2015-05-27 16:48:37,786  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The requested Element was not found!
+2015-05-27 16:48:38,694  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The element with the name "{http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes}ApacheWebServerProperties" was not found.
+2015-05-27 16:48:38,694  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The requested Element was not found!
+2015-05-27 16:48:38,739  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The element with the name "{http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes}ApacheLoadbalancerModuleProperties" was not found.
+2015-05-27 16:48:38,739  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The requested Element was not found!
+2015-05-27 16:48:38,750  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The element with the name "{http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes}MySQLProperties" was not found.
+2015-05-27 16:48:38,750  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The requested Element was not found!
+2015-05-27 16:48:39,540  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The element with the name "{http://www.example.com/tosca/Types/Moodle}MoodleApplicationProperties" was not found.
+2015-05-27 16:48:39,540  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The requested Element was not found!
+2015-05-27 16:48:39,588  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The element with the name "{http://www.example.com/tosca/Types/Moodle}MoodleDatabaseProperties" was not found.
+2015-05-27 16:48:39,588  ERROR  o.o.t.s.impl.resolver.ReferenceMapper     The requested Element was not found!
+
