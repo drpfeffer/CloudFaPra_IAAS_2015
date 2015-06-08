@@ -1,0 +1,16 @@
+\section{Deploy WordPress using AWS CloudFormation}
+
+\subsection{Example Template}
+Für die Einarbeitung haben wir das Template \enquote{WordPress basic single instance} verwendet. Das Template wurde direkt aus der Beispielvorlagen sammlung per \enquote{Launch Stack} deployed. Die Initisierung erfolgt automatisch und nach einer Wartezeit ist die WordPress Instanz online.
+
+\subsection{ClouldFormation - WordPress on two Machines}
+Wir haben uns entschieden das im ersten Teil verwendete Tamplate zu modifizieren. Das Template beinhaltet berreits die instalation von WordPress und MySQL, jedoch wird beides auf einer EC2-Instanz deployed. Für diese Aufgabenstellung müssen wir den MySQL Teil auf eine neue Maschine verschieben.
+
+Die json Liste \texttt{Resources} muss zwei Sicherheitsgruppen (WebServer und MySQL), sowie zwei Maschienen vom Typ \texttt{AWS::EC2::Instance} für WebSerer und MySQL-Server enhalten. Der WebServer Eintrag beschreibt alle notwendigen Befehle zur Installtion und Initierung des WebServers, der MySQL Eintrag beschreibt analog alle notwendigen Befehle für den MySQL-Server.
+
+Der WebServer muss mit der internet IP-Address mit dem MySQL server verbunden werden. Dieser Schritt muss in der Konfiguration des WebServer, genauer in der wp-config ausgeführt werden.
+
+Es kann der CloudFormation Befehl \texttt{{ "Fn::GetAtt" : [ "MySQLServer", "PrivateIp" ] }} verwendet werden. Die Funktion gibt die PrivateIp der Resource \enquote{MySQLServer} zurück. Mehr ist zur Verbindung nicht nötig.
+
+\subsection{Start}
+Für das Deployen auf CloudFormation verwenden wir das AWS-CLI. Das Skript \texttt{createEC2.sh} verwendet das Template \texttt{wordpress_mysql.json} und setzt alle notwendigen Properties. Die Installation benötigt ca. 5-10min
