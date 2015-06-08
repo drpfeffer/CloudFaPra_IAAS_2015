@@ -1,0 +1,41 @@
+
+
+\subsection{Ansätze}
+
+Es existieren drei Mögliche Anstze um die CSAR entsprechend zu modifizieren:
+\begin{enumeration}
+    \item Winery: vorhandene Moodle CSAR modifizieren
+    \item Winery: neue CSAR erstellen
+    \item Moddle CSAR Inhalte manuell modifizieren
+\end{enumeration}
+
+Im ersten Falle lädt man die Moodle CSAR in die grafische Oberfläche von Winery.
+Die Nodes die dabei geändert werden müssen sind \enquote{Moodle App} und \enquote{Moodle DB}, respektive deren Typen \enquote{MoodleApplication} und \enquote{MoodleDatabase}, sowie die zugehörige Verknüpfung \enquote{MoodleDatabaseConnection}.
+Zugehörig muss der Orchestrierungsplan abgeändert (Eclipse mit BPEL Plugin).
+Des weiteren müssen diverse Metadaten (Icon, Bilder, Bschreibung) der Instanzen abgeändert werden, welche der Benutzer später in der Vinothek sieht.
+Die im Hintergrund werkelnden Shell-Skripte lassen sich über die Artefakte unter \enquote{Other Elements} definieren und ändern. Diese kümmern sich um das Installieren von Apache, PHP, MySQL und Moodle (jetzt: Wordpress) sowie dem Konfigurieren dieser Programme.
+
+Der zweite Fall beginnt mit dem erstellen eines neuen Service-Templates und erfordert ein selbstständiges Erstellen sämtlicher Nodes(Types), Relationship(Types), der Topologie, des Orchestrationplan und der ArtefaktTemplates.
+Natürlich müssen auch die entsprechenden Installations- und Konfigurationsskripte erstellt werden.
+
+Der dritte Fall ist ein minimalinvasiver Ansatz: ändern des CSAR Archivs auf Dateiebene.
+Das ist möglich, da sich Wordpress und Moodle von der Topologie und den Voraussetzungen (MySQL, PHP, \ldots) gleichen und der Name einer Relation für deren Funktionalität keinen Unterschied macht.
+Bei diesem Ansatz ändern wir nur die tatsächliche Funktionalität in Form der Skripte ab, die sich in der CSAR Datei finden.
+
+Die anzupassenden Skripte sind:
+\begin{itemize}
+    \item \texttt{scripts/MoodleApplication/install.sh}
+    \item \texttt{scripts/MoodleApplication/configure.sh}
+    \item \texttt{scripts/MoodleDatabase/configure.sh}
+    \item \texttt{scripts/MoodleDatabaseConnection/configureDatabaseEndpoint.sh}
+\end{itemize}
+Änderungen an den Skripten analog zu den eingebetteten Skripten im CloudFormation Template \texttt{wordpress_mysql.json} aus Task 1.
+
+Die anzupassenden Metadaten sind:
+\begin{itemize}
+    \item \texttt{SELFSERVICE-Metadata/data.xml}
+    \item \texttt{SELFSERVICE-Metadata/icon.jpg}
+    \item \texttt{SELFSERVICE-Metadata/image.jpg}
+\end{itemize}
+
+\textbf{Hinweis:} Die Neuerstellung des Orchestrierungsplans ist immer bei der Abänderung der Skripte und der Namen der Node/Replationship(Types) nötig, da sich diese in diesem Plan wiederfinden.
