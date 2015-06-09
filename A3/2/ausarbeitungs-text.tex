@@ -16,7 +16,7 @@ Dazu ist das Skript \texttt{bootstrap.sh} verfügbar, welches eine Amazon Umgebu
 \subsection{Deploy WordPress}
 
 Das Skript \texttt{deploy-services.sh} setzt die Aufgabe 3.2 um.
-Zuerst werden Services für Wordpress und MySQL gestartet, eine Beziehung beider hinzugefügt und anschließend Wordpress der Umgebung sichtbar gemacht (Port 80).
+Zuerst werden Services für Wordpress und MySQL gestartet, eine Beziehung zwischen beiden hinzugefügt und anschließend Wordpress der Umgebung sichtbar gemacht (Port 80).
 Abschließend wird der MySQL Service durch das Hinzufügen einer Unit skaliert.
 
 \textbf{Hinweis}: es kam bei der Ausführung der Skripte immer mal wieder vor, dass juju plötzlich keine Verbindung mehr zu den Amazon Servern aufbauen konnte (Fehlermeldung indiziert einen Verbindungsabbruch).
@@ -25,12 +25,13 @@ Weshalb dies manchmal passiert, konnten wir nicht ermitteln.
 In aller Regel passierte es beim deployen mehrerer Services direkt hintereinander, jedoch kann auch ein \texttt{sleep} im Skript keine 100\% Sicherheit schaffen.
 
 Die Skripte sind dadurch mehr als eine Sammlung an Befehlen zu betrachten und nicht unbedingt zur unbeaufsichtigten Ausführung geeignet (da ggf. ein Abbruch stattfindet).
-Ein Ausführen aller Befehle im Skript manuell ,,per Hand`` im Terminal funktioniert immer, gänzlich frei von Verbindungsabbrüchen.
+Ein Ausführen aller Befehle im Skript manuell \enquote{per Hand} im Terminal funktioniert immer, gänzlich frei von Verbindungsabbrüchen.
 
 
 \subsubsection{Genutzte Instanzen}
 
-Per default nutzt juju auf Amazon m1/m3 Instanzen. \\
+Per default nutzt juju auf Amazon m1/m3 Instanzen.
+
 Es ist möglich mittels z.B. \texttt{--constraints} (siehe \texttt{bootstrap.sh}) die Nutzung von t2 mikro Instanzen zu erzwingen, was in juju 1.23 jedoch aufgrund eines kleinen Fehlers nicht möglich ist.
 
 Dieser Fehler wurde von unserer Gruppe behoben (https://github.com/juju/juju/commit/143e4fea), allerdings ist der nächste stable Release, der diesen Patch enthält (1.24), zum jetzigen Zeitpunkt noch nicht erschienen.
