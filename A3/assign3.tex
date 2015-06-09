@@ -1,0 +1,168 @@
+\documentclass[a4paper]{scrartcl}
+
+\usepackage[utf8x]{inputenc} 
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{csquotes}
+% % Mathepakete
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+%\usepackage{theorem}
+
+\newcommand{\vektor}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}} 
+
+
+\usepackage{listings}		% Für Programmcode einfügen
+
+\usepackage{pdfpages}		% PDF einbinden
+
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{lastpage}
+\usepackage{scrpage2}		     % Kopf und Fußzeile
+% \usepackage[all]{xy} % Für Zeichnungen (z.B. Automaten)
+
+% Hyperlinks, die nicht markiert sind.
+\usepackage[colorlinks,
+pdfpagelabels,
+pdfstartview = FitH,
+bookmarksopen = true,
+bookmarksnumbered = true,
+linkcolor = black,
+plainpages = false,
+hypertexnames = false,
+urlcolor = blue,
+citecolor = black] {hyperref}
+
+% Farben
+\definecolor{orange}{rgb}{1,0.8,0.2}
+\definecolor{lila}{rgb}{0.6,0,0.6}
+\definecolor{green}{rgb}{0,0.6,0}
+\definecolor{pink}{rgb}{1,0,1}
+
+% Definieren neuer Farben für den Java-Quelltext
+\definecolor{javaBlue}{RGB}{42,0.0,255}
+\definecolor{javaGreen}{RGB}{63,127,95}
+\definecolor{javaLila}{RGB}{127,0,85}
+\definecolor{javaDocBlue}{RGB}{63,95,191}
+\definecolor{javaDocTags}{RGB}{127,159,191}
+
+% Farben für XML
+\definecolor{forestgreen}{RGB}{34,139,34}
+\definecolor{orangered}{RGB}{239,134,64}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+
+
+%  Sonderzeichen für Mengen von Zahlen
+\newcommand{\C}{{\mathbb{C}}}         % \C für C (komplexe Zahlen)
+\newcommand{\Q}{{\mathbb{Q}}}         % \Q für Q (rationale Zahlen)
+\newcommand{\R}{{\mathbb{R}}}         % \R für R (reelle Zahlen)
+\newcommand{\Z}{{\mathbb{Z}}}         % \Z für Z (ganze Zahlen)
+\newcommand{\N}{{\mathbb{N}}}         % \N für N (natürliche Zahlen)
+
+%  Weitere Sonderzeichen
+\renewcommand{\epsilon}{\varepsilon}               % anderes Epsilon
+
+
+% Listings-Einstellungen
+
+\lstset{
+basicstyle=\tiny,
+%keywordstyle=\color{black}\bfseries\underbar,
+identifierstyle=,
+commentstyle=\color{blue},
+stringstyle=\ttfamily,
+showstringspaces=false,
+numbers=left,
+rulesepcolor=\color[gray]{0.5},
+texcl=true,
+commentstyle=\itshape,
+tabsize=4,
+columns=flexible,
+frame=shadowbox,
+literate={ö}{{\"o}}1
+         {ä}{{\"a}}1
+         {ü}{{\"u}}1
+         {Ö}{{\"O}}1
+         {Ä}{{\"A}}1
+         {Ü}{{\"U}}1
+         {ß}{{\ss}}1
+}
+
+% Style für Java
+\lstdefinestyle{java}{language=Java, keywordstyle=\color{javaLila}\bfseries, commentstyle=\color{javaGreen}, stringstyle=\color{javaBlue},
+numbers=left,
+numberstyle=\tiny,
+stepnumber=1,
+frame=trbl,
+showstringspaces=false,
+captionpos=b,
+breaklines=true,
+basicstyle=\rmfamily, morecomment=[s][\color{javaDocBlue}]{/**}{*/},
+tabsize=2,
+emph={@author, @deprecated, @param, @return, @see, @since, @throws, @version, @serial, @serialField, @serialData, @link},
+emphstyle=\color{javaDocTags},
+extendedchars=true}
+
+
+
+% Style für XML
+\lstdefinestyle{XML} {
+    language=XML,
+    extendedchars=true, 
+    breaklines=true,
+    breakatwhitespace=true,
+    emph={},
+    emphstyle=\color{red},
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    commentstyle=\color{gray}\upshape,
+    morestring=[b]",
+    morecomment=[s]{<?}{?>},
+    morecomment=[s][\color{forestgreen}]{<!--}{-->},
+    keywordstyle=\color{orangered},
+    stringstyle=\ttfamily\color{black}\normalfont,
+    tagstyle=\color{darkblue}\bf,
+    morekeywords={attribute,xmlns,version,type,release, name, maxOccurs},
+}
+
+
+%  Hier sucht man sich den gewünschten Stil für Kopf- bzw. Fußzeile aus.
+%\pagestyle{empty}                    % keine Kopf- und Fußzeilen
+%\pagestyle{plain}                    % nur Seitenzahlen
+%\pagestyle{headings}                 % Aktivieren für Kopf- und Fußzeilen
+\pagestyle{scrheadings}							% schönere Kopf und Fußzeile
+\clearscrheadings 
+
+% % % % % % % % % % % % % % %
+% Zeichenpakete (Automaten) % 
+% % % % % % % % % % % % % % %
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tkz-berge}
+\usetikzlibrary{arrows,automata}
+
+%  Kopf und Fußzeile ---------------------------------------
+
+\ihead{Gruppe 2}
+\cfoot{Felix Ebinger (2719182)\\Thomas Reinhardt (2635525)\\Julian Ziegler (2556772)}
+\ohead{\today}
+\ifoot{Assignement 3}
+\chead{Lab Course:\\
+Cloud Architectures \& Management}
+\ofoot{Seite \thepage \  von \pageref{LastPage}}
+
+\begin{document}
+\include{1/ausarbeitungs_text}
+\include{2/ausarbeitungs-text}
+\include{3/a3}
+\include{4/tttt}
+
+\end{document}

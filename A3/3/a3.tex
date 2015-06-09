@@ -1,3 +1,4 @@
+\section{Moodle mit OpenTOSCA}
 \subsection{Winery mit Docker}
 
 Um Winery mit Docker zu deployen muss Docker zunächst installiert werden. Mittels Docker kann dann der Docker-Container von Winery deployed werden. Im Github Repository befindet sich ein Skript (\verb|deploy_docker.sh|) dafür. Der Einfachheit beim Aufruf halber haben wir den Port \verb|8080| des Containers an den Port \verb|80| der Hostmaschine gebunden. Winery kann also unter \verb|<HOST-IP>/winery)| aufgerufen werden.
@@ -8,7 +9,7 @@ Abbildung \ref{fig:moodle_winery} zeigt die Topologie vom Moodle-CSAR, dargestel
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{winery_moodle.png}
+\includegraphics[width=\textwidth]{3/winery_moodle}
 \caption{Moodle in Winery}
 \label{fig:moodle_winery}
 \end{figure}
@@ -22,7 +23,7 @@ Beim Deployment von Moodle treten laut Log (Error Logs im GitHub-Repository, \ve
 Eine weitere Beochbachtung ist, dass der Export von CSAR-Archiven aus der Winery fehlschlägt, zumindest sind diese erheblich kleiner als das zuvor importierte CSAR und OpenTOSCA bezeichnet das Archiv als beschädigt.
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth]{moodle_success.png}
+\includegraphics[width=\textwidth]{3/moodle_success}
 \caption{Moodle Deployment}
 \label{fig:moodle_deployment}
 \end{figure}

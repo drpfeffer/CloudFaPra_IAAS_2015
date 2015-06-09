@@ -1,8 +1,8 @@
-
+\section{Juju}
 \subsection{Setup}
 
 Es wird folgend angenommen, dass juju mit einer validen Amazon Umgebung konfiguriert ist.
-Das bedeutet in erster Linie, dass Zugangsdaten entweder in der Konfigurationsdatei \texttt{~/.juju/environments.yaml} angegeben, oder die Umgebugnsvariablen \texttt{AWS_ACCESS_KEY_ID} und \texttt{AWS_SECRET_ACCESS_KEY} in der genutzten Shell-Umgebung exportiert sind.
+Das bedeutet in erster Linie, dass Zugangsdaten entweder in der Konfigurationsdatei \texttt{~/.juju/environments.yaml} angegeben, oder die Umgebugnsvariablen \texttt{AWS\_ACCESS\_KEY\_ID} und \texttt{AWS\_SECRET\_ACCESS\_KEY} in der genutzten Shell-Umgebung exportiert sind.
 
 Zudem sollte ein \texttt{admin-secret} gesetzt sein, sofern die juju GUI genutzt werden soll.
 
@@ -25,7 +25,7 @@ Weshalb dies manchmal passiert, konnten wir nicht ermitteln.
 In aller Regel passierte es beim deployen mehrerer Services direkt hintereinander, jedoch kann auch ein \texttt{sleep} im Skript keine 100\% Sicherheit schaffen.
 
 Die Skripte sind dadurch mehr als eine Sammlung an Befehlen zu betrachten und nicht unbedingt zur unbeaufsichtigten Ausführung geeignet (da ggf. ein Abbruch stattfindet).
-Ein Ausführen aller Befehle im Skript manuell \enquote{per Hand} im Terminal funktioniert immer, gänzlich frei von Verbindungsabbrüchen.
+Ein Ausführen aller Befehle im Skript manuell ,,per Hand`` im Terminal funktioniert immer, gänzlich frei von Verbindungsabbrüchen.
 
 
 \subsubsection{Genutzte Instanzen}

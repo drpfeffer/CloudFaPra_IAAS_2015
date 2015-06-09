@@ -13,4 +13,4 @@ Der WebServer muss mit der internet IP-Address mit dem MySQL server verbunden we
 Es kann der CloudFormation Befehl \texttt{{ "Fn::GetAtt" : [ "MySQLServer", "PrivateIp" ] }} verwendet werden. Die Funktion gibt die PrivateIp der Resource \enquote{MySQLServer} zurück. Mehr ist zur Verbindung nicht nötig.
 
 \subsection{Start}
-Für das Deployen auf CloudFormation verwenden wir das AWS-CLI. Das Skript \texttt{createEC2.sh} verwendet das Template \texttt{wordpress_mysql.json} und setzt alle notwendigen Properties. Die Installation benötigt ca. 5-10min
+Für das Deployen auf CloudFormation verwenden wir das AWS-CLI. Das Skript \texttt{createEC2.sh} verwendet das Template \texttt{wordpress\_mysql.json} und setzt alle notwendigen Properties. Die Installation benötigt ca. 5-10min

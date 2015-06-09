@@ -1,16 +1,14 @@
-
-
-\subsection{Ansätze}
+\section{WordPress mit OpenTOSCA}
 
 Es existieren drei Mögliche Anstze um die CSAR entsprechend zu modifizieren:
-\begin{enumeration}
+\begin{enumerate}
     \item Winery: vorhandene Moodle CSAR modifizieren
     \item Winery: neue CSAR erstellen
     \item Moddle CSAR Inhalte manuell modifizieren
-\end{enumeration}
+\end{enumerate}
 
 Im ersten Falle lädt man die Moodle CSAR in die grafische Oberfläche von Winery.
-Die Nodes die dabei geändert werden müssen sind \enquote{Moodle App} und \enquote{Moodle DB}, respektive deren Typen \enquote{MoodleApplication} und \enquote{MoodleDatabase}, sowie die zugehörige Verknüpfung \enquote{MoodleDatabaseConnection}.
+Die Nodes die dabei geändert werden müssen sind ,,Moodle App`` und \enquote{Moodle DB}, respektive deren Typen \enquote{MoodleApplication} und \enquote{MoodleDatabase}, sowie die zugehörige Verknüpfung \enquote{MoodleDatabaseConnection}.
 Zugehörig muss der Orchestrierungsplan abgeändert (Eclipse mit BPEL Plugin).
 Des weiteren müssen diverse Metadaten (Icon, Bilder, Bschreibung) der Instanzen abgeändert werden, welche der Benutzer später in der Vinothek sieht.
 Die im Hintergrund werkelnden Shell-Skripte lassen sich über die Artefakte unter \enquote{Other Elements} definieren und ändern. Diese kümmern sich um das Installieren von Apache, PHP, MySQL und Moodle (jetzt: Wordpress) sowie dem Konfigurieren dieser Programme.
@@ -29,7 +27,7 @@ Die anzupassenden Skripte sind:
     \item \texttt{scripts/MoodleDatabase/configure.sh}
     \item \texttt{scripts/MoodleDatabaseConnection/configureDatabaseEndpoint.sh}
 \end{itemize}
-Änderungen an den Skripten analog zu den eingebetteten Skripten im CloudFormation Template \texttt{wordpress_mysql.json} aus Task 1.
+Änderungen an den Skripten analog zu den eingebetteten Skripten im CloudFormation Template \texttt{wordpress\_mysql.json} aus Task 1.
 
 Die anzupassenden Metadaten sind:
 \begin{itemize}
