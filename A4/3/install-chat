@@ -1,0 +1,52 @@
+#!/bin/env bash
+
+# Config
+# Login Data for BlueMix
+SPACE=dev
+ORG="fapra@felix-ebinger.de"
+USER="fapra@felix-ebinger.de"
+# App Config
+APPNAME=FapraChat
+LOGNAME=FapraChatLogs
+DBNAME=chatlogdb
+
+
+echo "Connect to BlueMix..."
+set -e
+cf api https://api.ng.bluemix.net || ex
+cf login -u $USER -o $ORG -s $SPACE
+
+echo "Deploy the Chat..."
+if [ -d "bluemix-demo-apps" ]; then
+	echo "Directory 'bluemix-demo-apps' exists already."
+	echo -n "Delete it? [Y/n] "
+	read -n 1 delYn
+	if [ "${delYn}" != "" ]
+	then
+		echo ""
+	fi
+	if [ "${delYn}" = "" ] || [ "${delYn}" = "y" || [ "${delYn}" = "Y" ]
+	then
+		rm -rf bluemix-demo-apps
+	else
+		echo "Remove or delete 'bluemix-demo-apps' and rerun script!"
+		exit 1
+	fi
+fi
+git clone https://github.com/jojow/bluemix-demo-apps.git
+cd bluemix-demo-apps/chat
+set +e
+cf push $APPNAME -c 'node app.js' -k 128M -m 128M 
+set -e
+cf create-service mongolab sandbox $DBNAME
+cf bind-service $APPNAME $DBNAME
+cf restart $APPNAME
+cd ../chatlog-viewer/
+set +e
+cf push $LOGNAME -c 'node app.js' -k 128M -m 128M 
+set -e
+cf bind-service $LOGNAME $DBNAME
+cf restart $LOGNAME
+echo "Job done."
+echo "Chat-Server: $APPNAME.mybluemix.net"
+echo "Log-Viewer: $LOGNAME.mybluemix.net"
