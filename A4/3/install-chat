@@ -13,7 +13,7 @@ DBNAME=chatlogdb
 
 echo "Connect to BlueMix..."
 set -e
-cf api https://api.ng.bluemix.net || ex
+cf api https://api.ng.bluemix.net
 cf login -u $USER -o $ORG -s $SPACE
 
 echo "Deploy the Chat..."
