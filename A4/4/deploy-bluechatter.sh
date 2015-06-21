@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -23,5 +23,5 @@ fi
 
 cd "bluechatter_${SUF}"
 cf push fapra-bluechatter
-cd ..
-rm -rf "bluechatter_${SUF}"
+#cd ..
+#rm -rf "bluechatter_${SUF}"
