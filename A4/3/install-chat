@@ -29,7 +29,7 @@ if [ -d "bluemix-demo-apps" ]; then
 	then
 		rm -rf bluemix-demo-apps
 	else
-		echo "Remove or delete 'bluemix-demo-apps' and rerun script!"
+		echo "Rename or delete 'bluemix-demo-apps' and rerun script!"
 		exit 1
 	fi
 fi
@@ -48,5 +48,6 @@ set -e
 cf bind-service $LOGNAME $DBNAME
 cf restart $LOGNAME
 echo "Job done."
+echo ""
 echo "Chat-Server: $APPNAME.mybluemix.net"
 echo "Log-Viewer: $LOGNAME.mybluemix.net"
