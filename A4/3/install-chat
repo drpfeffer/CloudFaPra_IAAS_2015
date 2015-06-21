@@ -13,7 +13,7 @@ DBNAME=chatlogdb
 
 echo "Connect to BlueMix..."
 set -e
-cf api https://api.ng.bluemix.net || ex
+cf api https://api.ng.bluemix.net
 cf login -u $USER -o $ORG -s $SPACE
 
 echo "Deploy the Chat..."
@@ -29,7 +29,7 @@ if [ -d "bluemix-demo-apps" ]; then
 	then
 		rm -rf bluemix-demo-apps
 	else
-		echo "Remove or delete 'bluemix-demo-apps' and rerun script!"
+		echo "Rename or delete 'bluemix-demo-apps' and rerun script!"
 		exit 1
 	fi
 fi
@@ -48,5 +48,8 @@ set -e
 cf bind-service $LOGNAME $DBNAME
 cf restart $LOGNAME
 echo "Job done."
+echo ""
 echo "Chat-Server: $APPNAME.mybluemix.net"
 echo "Log-Viewer: $LOGNAME.mybluemix.net"
+echo ""
+echo "Achtung: Der Server für den Log-Viewer muss nach dem Senden der ersten Chat-Nachricht mittels des Befehls 'cf restart $LOGNAME' neugestartet werden um die Chats einsehen zu können."
