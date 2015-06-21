@@ -5,3 +5,5 @@ Um den Chat und den Chat-Log mittels Bluemix zu deployen muss zunächst das Clou
 Der Chat-Log muss nach dem Senden der ersten Chat-Nachricht mittels des Befehls \verb|cf restart <LOG-APP-NAME>| neugestartet werden um die Chats einsehen zu können.
 
 Beim Skalieren der Chat-App muss beachtet werden, dass die einzelnen Instanzen nicht miteinander verbunden sind, sodass man bei mehr als zwei Instanzen zufällig mit einer verbunden wird. Das bedeutet insbesondere, dass man nicht zwangsläufig mit der Instanz verbunden wird, mit der der Chat-Partner verbunden wird. Dennoch werden alle Chats in derselben Datenbank gespeichert. In der Chat-Datenbank wird nicht gespeichert, aus welcher Instanz die Chat-Nachrichten stammen. Es ist so also nur mit Informationen aus der Datenbank nicht möglich, einzelne Gesprächsverläufe zu rekonstruieren.
+
+Das Deployment der App ist nur in der US und nicht in der EU-Region möglich, da der Datenbankserver nur in der US-Region zur Verfügung steht.
