@@ -1,0 +1,30 @@
+\section{IaaS vs. PaaS}
+Wir sind beim Vergleich von PaaS zu IaaS zu dem Schluss gekommen, dass Vorteile immer stark in
+Abhängigkeit des Anwenders sind. Möchte der Anwender den Fokus auf die Entwicklung und
+Bereitstellung, so kann das Verwenden von PaaS die Entwicklungszeit und auch Kosten reduzieren, er
+muss sich nicht um die Wartung / Koordinierung und Erweiterung der Infrastruktur (lies Virtuellen
+Maschinen) kümmern. Er ist aber gelichzeitig an das Angebot und den Service des Anbieters gebunden.
+
+\begin{tabular}{p{7cm} p{7cm} }
+Vorteil & Nachteil \\
+\begin{itemize}
+  \item Entwickler kann sich auf Applikation konzentrieren.
+  \item Keine /wenig Kenntnisse zur Instandhaltung der Infrastruktur notwendig.
+  \item Anwender muss sich nicht um CPU/Speicher kümmern. Stellte gewünschte Grenzwerte ein.
+   Management auf IS-Ebene vom PaaS-Provider.
+   \item Skalierung und Load-Balancing wird vereinfacht. Nur Applikationsschicht muss angepasst
+   werden.
+ \item Schnelles deployen einer (fertigen) Anwendung. Leichte Verknüpfung mit Release Management
+ 	(BlueMix, JazzHub).
+\end{itemize}& 
+\begin{itemize}
+\item Gebunden an das Angebot des PaaS-Anbieter. Plattformen und Protokolle werden vom Anbieter
+bestimmt.  Erschwert die Migration zwischen verschiedenen Anbietern.
+\item Kein Einfluss auf das OS. 
+\item Kein Einfluss auf aktuellste/gepatchte Versionen (Update-Politik ist von Anbieter bestimmt).
+\item Keinen Einfluss auf die Infrastrukturebene. Leistung der Server /VM werden vom Anbieter bestimmt. 
+\item Keinen Einfluss ob Shared oder Dedicated Maschinen. Man muss Anbieter bei Management vertrauen.
+\item Es werden nur Service-Garantien gegeben (CPU, Speicher etc).
+\item Bei Verwendung einer Skalierung / LB muss man sich an die Protokolle und Prozesse des Anbieters richten
+\end{itemize}
+\end{tabular}
