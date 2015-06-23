@@ -10,11 +10,10 @@ Realisiert wird dies mittels eines sogenannten \enquote{Boilerplate} Pakets, wel
 Es werden darüberhinaus Plugins angeboten, die eine Verknüpfung von Wordpress mit beispielsweise IBM Object Storage ermöglicht, um Mediadaten persistent zu speichern.
 
 Anschließend widmeten wir uns den beiden genannten sample Applications.
-Da \enquote{todo-apps} auf den ersten Blick eine ähnliche Komplexität wie Wordpress aufzuweisen scheint (es kommt mit fertigen deployment Skripten), haben wir \enquote{bluechatter} deployed.
+Da \enquote{todo-apps} auf den ersten Blick eine ähnliche Komplexität wie Wordpress aufzuweisen scheint (es kommt mit fertigen deployment Skripten), haben wir folgend \enquote{bluechatter} deployed.
 
 Dazu wurde das Script \texttt{deploy-bluechatter.sh} genutzt.
-Dieses startet nach dem Login einen Redis Datenbankservice, klont das bluechatter Respository und
-pusht dieses, nach einer kleinen Modifikation hinsichtlich eines Plans (der im Repo genutzte existiert nicht mehr), zu Bluemix.
+Dieses startet nach dem Login einen Redis Datenbankservice, klont das bluechatter Respository und pusht dieses, nach einer kleinen Modifikation des Redis "Plans" (der im Originalrepo genutzte existiert nicht mehr), zu Bluemix.
 
 Weitere Befehle, wie in 4.3, sind nicht notwendig, da die Relationen und Konfigurationen des/der Service(s) und Application(s) in der \texttt{manifest.yml} bereits definiert sind.
-Dieser Ansatz der Konfiguration empfielt sich im allgemeinen für Echtwelt-Projekte, speziell wenn die Konfiguration (ver|ge)teilt werden können soll.
+Dieser Ansatz der Konfiguration empfielt sich im allgemeinen für "Echtwelt"-Projekte, speziell wenn die Konfiguration (ver|ge)teilt werden können soll.
