@@ -1,0 +1,20 @@
+
+\subsection{4.4}
+
+Da die Aufgabe explizit Wordpress nennt, haben wir uns zuerst dies angesehen.
+Es stellte sich heraus, dass Wordpress einst nicht ganz simpel auf Bluemix zu nutzen war, was zum einen an einer Art fehlendem, fertigen LAMP Stack lag, zum anderen an einer nicht existenten, persistenten Dateispeichermöglichkeit in Bluemix.
+
+Dies hat sich jedoch geändert und Wordpress lässt sich seit letztem Dezember nun enorm simpel in Bluemix aufsetzen.
+Es sind essentiell nur noch wenige Klicks in der grafischen Oberfläche notwendig, was wir so auch erfolgreich durchführten.
+Realisiert wird dies mittels eines sogenannten \enquote{Boilerplate} Pakets, welches praktisch ein Set an Services beinhaltet.
+Es werden darüberhinaus Plugins angeboten, die eine Verknüpfung von Wordpress mit beispielsweise IBM Object Storage ermöglicht, um Mediadaten persistent zu speichern.
+
+Anschließend widmeten wir uns den beiden genannten sample Applications.
+Da \enquote{todo-apps} auf den ersten Blick eine ähnliche Komplexität wie Wordpress aufzuweisen scheint (es kommt mit fertigen deployment Skripten), haben wir \enquote{bluechatter} deployed.
+
+Dazu wurde das Script \texttt{deploy-bluechatter.sh} genutzt.
+Dieses startet nach dem Login einen Redis Datenbankservice, klont das bluechatter Respository und
+pusht dieses, nach einer kleinen Modifikation hinsichtlich eines Plans (der im Repo genutzte existiert nicht mehr), zu Bluemix.
+
+Weitere Befehle, wie in 4.3, sind nicht notwendig, da die Relationen und Konfigurationen des/der Service(s) und Application(s) in der \texttt{manifest.yml} bereits definiert sind.
+Dieser Ansatz der Konfiguration empfielt sich im allgemeinen für Echtwelt-Projekte, speziell wenn die Konfiguration (ver|ge)teilt werden können soll.
